@@ -235,16 +235,26 @@ Run 1 finalized `STABLE` with full coverage and agreement (10,000 bps each),
 zero flips, zero uncertainty, and no critical failures. The exact suite hash
 passes `is_latest_stable`; an incorrect hash returns false.
 
+Run 1 established the baseline semantic anchor. Run 2 reused the same sealed
+Suite 1 and also finalized `STABLE`: it linked to Run 1, reproduced all three
+labels, retained 10,000 bps coverage and agreement, and recorded
+`changed_count: 0`. The behavior hash stayed the same across both runs. This is
+the live longitudinal proof that consensus reproduced the behavior of the
+same frozen suite across two independent calibration runs. The exact suite
+hash passes `is_latest_stable` with minimum run ID 2 as well as 1.
+
 CalibrationGate is deployed at `0x39aeF5E565Cd7211b10c78E03c754C98f5ACAb94`.
 Its finalized `open_if_calibrated()` transaction succeeded and its readback
 records run 1 and run hash
 `d57e853bac5a6e405c9929ccb395ae555bf72a9fb9c44c25324b749e4cd116cf`.
-See [proof/studionet-live.json](proof/studionet-live.json) for sanitized
+The existing gate remains open based on Run 1 (its configured minimum is 1);
+the latest Run 2 is also stable for that exact suite. See
+[proof/studionet-live.json](proof/studionet-live.json) for sanitized
 machine-readable observations and transaction evidence.
 
 ## What CalibrationAnchor does not claim
 
-CalibrationAnchor does not prove that the benchmark creator chose objectively correct gold labels. It does not compare hidden model identities, reveal validator internals or prove that every possible task is stable. It measures **observable consensus behaviour against one explicitly frozen benchmark suite**.
+CalibrationAnchor does not prove that the benchmark creator chose objectively correct gold labels. It proves observable GenLayer consensus behaviour relative to the exact frozen benchmark suite selected by the consumer. It does not compare hidden model identities, reveal validator internals or prove that every possible task is stable.
 
 That narrow boundary is intentional. It makes the primitive auditable and reusable instead of pretending that one contract can certify an entire AI system.
 

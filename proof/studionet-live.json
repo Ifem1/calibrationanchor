@@ -28,6 +28,15 @@
         "minimum_run_id": 1,
         "opened_run_id": 1,
         "opened_run_hash": "d57e853bac5a6e405c9929ccb395ae555bf72a9fb9c44c25324b749e4cd116cf"
+      },
+      "after_run_2_latest_stable_min_run_1": true,
+      "after_run_2_status_readback": {
+        "opened": true,
+        "suite_id": 1,
+        "expected_suite_hash": "ef3d366b60c54dab2f4bc432b6bcaef5def090b4fe334a8a18d699858b0a0546",
+        "minimum_run_id": 1,
+        "opened_run_id": 1,
+        "opened_run_hash": "d57e853bac5a6e405c9929ccb395ae555bf72a9fb9c44c25324b749e4cd116cf"
       }
     }
   },
@@ -52,12 +61,28 @@
       "hash": "0x96f3c0f512fb66f22e081a13c1f1c3f2767ae8e3b6452d8574cf04b4c32f776f",
       "state": "FINALIZED"
     },
-    "case_2_execution": {
+    "run_1_case_2_execution": {
       "hash": "0xd031f1a62d4ef50c6f65e9afb34f3837c77a9db13f6f8ca11a636fa7549a210d",
       "state": "FINALIZED"
     },
-    "case_1_execution": {
+    "run_1_case_1_execution": {
       "hash": "0x89d9f1d7f45841905278d0509f0d9c3bd7830a8e1f7687861f804451b9a11499",
+      "state": "FINALIZED"
+    },
+    "run_2_opening": {
+      "hash": "0x0a61416b628a57c9569889efb053727d490716beeadc06dbb1c7551812925802",
+      "state": "FINALIZED"
+    },
+    "run_2_case_1_execution": {
+      "hash": "0x716081070ed021f284e226e2b1bb9ee2d8485dd84057002091ff651e138634c7",
+      "state": "FINALIZED"
+    },
+    "run_2_case_2_execution": {
+      "hash": "0x6eb607d6b6f46f14f1341ce681564fc8769b4d0f510b4e3b13e2dd43d9589930",
+      "state": "FINALIZED"
+    },
+    "run_2_finalization": {
+      "hash": "0x2867c6ee043fa28509f745056fd52e87796d60f2b734a835a8d01f36d8b7276c",
       "state": "FINALIZED"
     }
   },
@@ -122,10 +147,60 @@
   },
   "stable_checks": {
     "exact_suite_hash_min_run_1": true,
-    "incorrect_all_f_suite_hash_min_run_1": false
+    "exact_suite_hash_min_run_2": true,
+    "incorrect_all_f_suite_hash_min_run_1": false,
+    "incorrect_all_f_suite_hash_min_run_2": false
   },
+  "additional_runs": [
+    {
+      "id": 2,
+      "suite_id": 1,
+      "suite_hash": "ef3d366b60c54dab2f4bc432b6bcaef5def090b4fe334a8a18d699858b0a0546",
+      "previous_run_id": 1,
+      "state": "FINALIZED",
+      "calibration_state": "STABLE",
+      "finalization_transaction": "0x2867c6ee043fa28509f745056fd52e87796d60f2b734a835a8d01f36d8b7276c",
+      "result_count": 3,
+      "total_weight": 5,
+      "valid_weight": 5,
+      "coverage_bps": 10000,
+      "agreement_bps": 10000,
+      "flip_bps": 0,
+      "uncertain_bps": 0,
+      "critical_failures": 0,
+      "critical_coverage_failures": 0,
+      "changed_count": 0,
+      "behavior_hash": "a08cfb4bdd3a45d10041473aab1250c1ad98b73a0c4dd73bef24a43cf5fb87a0",
+      "run_hash": "f47dc362232366d27d12b2c9c6859b35816f113bde0cc27a0543b6c523ccc461",
+      "cases": [
+        {
+          "id": 1,
+          "observed": "SUPPORTED",
+          "outcome": "MATCH",
+          "runtime_state": "OK",
+          "result_hash": "e5c1e757ea34ad6a7e829997321d055fec7f3cea170e2038f478590d2df51d65"
+        },
+        {
+          "id": 2,
+          "observed": "NOT_SUPPORTED",
+          "outcome": "MATCH",
+          "runtime_state": "OK",
+          "result_hash": "0780d75f6dd6557f9a025f0aeaed3fb002ec08c0a734ccd3d0fdc12008be37e6"
+        },
+        {
+          "id": 3,
+          "observed": "AMBIGUOUS",
+          "outcome": "MATCH",
+          "runtime_state": "OK",
+          "result_hash": "c7d6d8454cee85155398d6931ce5fdafc33b18fd53ea02034df6d34517216f41"
+        }
+      ],
+      "case_3_execution_transaction": "unavailable; finalized case-result readback observed"
+    }
+  ],
   "notes": [
     "The benchmark labels are the suite author's frozen assertions; this proof does not claim they are universally true.",
-    "Case 2 result transaction hash was not retained in the CLI output; its finalized on-chain result readback is recorded above."
+    "The Run 1 Case 2 execution transaction hash was recovered from the recorded CLI transaction output and independently verified with a finalized Studionet receipt.",
+    "Run 2 Case 3 reached finalized on-chain state as shown by its case-result readback; its transaction hash was unavailable in the captured CLI output and is not supplied."
   ]
 }

@@ -74,10 +74,18 @@ The deployed CalibrationAnchor address is
 `0xf130cc9e316a9fe3be6b607e2b9541d650edc4bfe47d09947c8156f3e6f8ef9c`
 finalized successfully. Suite 1 is sealed at
 `ef3d366b60c54dab2f4bc432b6bcaef5def090b4fe334a8a18d699858b0a0546`.
-Run 1 finalized `STABLE`, with all three labels reproduced, full weighted
-coverage and agreement (10,000 bps), no flips, no uncertainty, and zero
-critical failures. `is_latest_stable` returned true for the exact suite hash
-and false for an incorrect hash.
+Run 1 established the baseline semantic anchor and finalized `STABLE`, with all
+three labels reproduced, full weighted coverage and agreement (10,000 bps), no
+flips, no uncertainty, and zero critical failures. Run 2 reused the same exact
+sealed suite, linked to Run 1, and also finalized `STABLE`. It reproduced the
+same labels and behavior hash, with full coverage/agreement and
+`changed_count: 0`. This is the live longitudinal proof that the same frozen
+suite remained stable across two independent calibration runs.
+
+`is_latest_stable` returned true for the exact suite hash with minimum run IDs
+2 and 1, and false for an incorrect suite hash. The existing CalibrationGate
+remains open from Run 1; the latest Run 2 meets its exact suite and minimum-run
+condition as well.
 
 CalibrationGate is deployed at
 `0x39aeF5E565Cd7211b10c78E03c754C98f5ACAb94`. Its finalized
@@ -85,5 +93,5 @@ CalibrationGate is deployed at
 readbacks and transaction evidence are in [proof/studionet-live.json](proof/studionet-live.json).
 
 The benchmark remains a trust object: this proof shows consensus agreement
-with the frozen suite labels; it does not establish that those labels are
-universally true.
+with the exact frozen suite selected by the consumer; it does not establish
+that the benchmark labels are universally true.

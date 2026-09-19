@@ -4,14 +4,16 @@ This directory is intentionally free of invented deployment values.
 
 ## Observed run status
 
-The finalized Studionet deployment, calibration lifecycle, stable-state
+The finalized Studionet deployment, both calibration runs, stable-state
 checks, and CalibrationGate call are recorded in
 [`studionet-live.json`](studionet-live.json). Values there come from CLI
-transaction receipts and on-chain readbacks. A case 2 execution transaction
-hash was not retained from the CLI response, so the case result itself is
-included without claiming that missing transaction identifier.
+transaction receipts and on-chain readbacks. The Run 1 Case 2 transaction hash
+was recovered from the recorded CLI output and independently verified using
+its finalized Studionet receipt. The Run 2 Case 3 result was read back in its
+finalized state, but its transaction hash was not captured and is intentionally
+not claimed.
 
-After the final 61999 deployment, add sanitized machine-readable records for:
+The machine-readable record contains sanitized observations for:
 
 - deployment address and transaction;
 - source commit SHA;

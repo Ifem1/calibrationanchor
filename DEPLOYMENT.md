@@ -115,8 +115,22 @@ and run hash is `d57e853bac5a6e405c9929ccb395ae555bf72a9fb9c44c25324b749e4cd116c
 The supported, not-supported, and ambiguous cases each returned their
 corresponding frozen label and `MATCH`.
 
-`is_latest_stable(1, exact_suite_hash, 1)` returned true; the same call with an
-all-`f` suite hash returned false.
+Run 1 established the baseline semantic anchor. Run 2 opened against the same
+sealed Suite 1 and has `previous_run_id: 1`. It finalized `STABLE` in
+`0x2867c6ee043fa28509f745056fd52e87796d60f2b734a835a8d01f36d8b7276c` with
+three results, total/valid weight 5/5, coverage/agreement 10,000 bps,
+flip/uncertain 0 bps, zero critical failures, and `changed_count: 0`. Its
+behavior hash is the same as Run 1:
+`a08cfb4bdd3a45d10041473aab1250c1ad98b73a0c4dd73bef24a43cf5fb87a0`; its
+run hash is `f47dc362232366d27d12b2c9c6859b35816f113bde0cc27a0543b6c523ccc461`.
+This is the live longitudinal proof that the same frozen suite remained
+stable across two independent calibration runs.
+
+`is_latest_stable(1, exact_suite_hash, 2)` and the same call with minimum run
+ID 1 returned true; an all-`f` suite hash returned false. The existing gate
+remains open with its pinned minimum run 1 and records Run 1 as the run at
+which it opened. The latest Run 2 also satisfies that pinned stable condition,
+so redeployment was unnecessary.
 
 CalibrationGate finalized at
 `0x39aeF5E565Cd7211b10c78E03c754C98f5ACAb94` in transaction
