@@ -21,13 +21,19 @@ jobs:
             https://github.com/genlayerlabs/genvm/releases/download/v0.3.0-rc7/genvm-runners-all.tar.xz \
             -o "$HOME/.cache/gltest-direct/genvm-universal-v0.3.0-rc7.tar.xz"
           echo "e218a1854214681560351051f76fe2b878545cf3409455ef372d57014a88ca67  $HOME/.cache/gltest-direct/genvm-universal-v0.3.0-rc7.tar.xz" | sha256sum -c -
+          mkdir -p "$HOME/.cache/genvm-linter"
+          ln -sf "$HOME/.cache/gltest-direct/genvm-universal-v0.3.0-rc7.tar.xz" "$HOME/.cache/genvm-linter/genvm-universal-v0.3.0-rc7.tar.xz"
       - name: Direct-mode tests
         run: gltest tests/direct -v -s
       - name: Scoring model verification
         run: python scripts/verify_scoring_model.py
       - name: CalibrationAnchor GenVM lint
+        env:
+          GENVM_VERSION: v0.3.0-rc7
         run: genvm-lint validate contracts/calibrationanchor.py
       - name: CalibrationGate GenVM lint
+        env:
+          GENVM_VERSION: v0.3.0-rc7
         run: genvm-lint validate contracts/calibration_gate.py
       - name: Repository preflight
         run: python scripts/preflight.py
