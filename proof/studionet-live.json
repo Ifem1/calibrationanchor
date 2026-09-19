@@ -6,7 +6,7 @@
     "explorer": "https://explorer-studio.genlayer.com/",
     "cli_version": "0.39.2"
   },
-  "source_commit_sha": null,
+  "source_commit_sha": "bfb9c25918472838c05f6cef6207fb543370a310",
   "contracts": {
     "calibration_anchor": {
       "address": "0xb489b48ACd1035f48cDFd347346011C8A97f36fb",
