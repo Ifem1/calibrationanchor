@@ -1,0 +1,3 @@
+# Stable Studionet-compatible local tooling, matching accepted 61999-era repositories.
+genlayer-test @ git+https://github.com/genlayerlabs/genlayer-testing-suite@v0.29.2
+genvm-linter==0.11.0

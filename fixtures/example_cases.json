@@ -1,0 +1,29 @@
+[
+  {
+    "type": "STATIC",
+    "title": "Dual approval present",
+    "context": "The signed release record states deployment 42 was approved by both required reviewers.",
+    "proposition": "Deployment 42 has both required reviewer approvals.",
+    "gold_verdict": "SUPPORTED",
+    "weight": 3,
+    "critical": true
+  },
+  {
+    "type": "STATIC",
+    "title": "Outage ended",
+    "context": "The incident log states the service recovered at 12:05 UTC. No later outage is recorded in this fixture.",
+    "proposition": "The service remained down after 12:05 UTC.",
+    "gold_verdict": "NOT_SUPPORTED",
+    "weight": 2,
+    "critical": false
+  },
+  {
+    "type": "STATIC",
+    "title": "Missing emergency condition",
+    "context": "The policy says emergency access may be granted when a production incident is active, but this fixture does not state whether an incident is active.",
+    "proposition": "Emergency access is authorized in this specific situation.",
+    "gold_verdict": "AMBIGUOUS",
+    "weight": 2,
+    "critical": false
+  }
+]

@@ -1,0 +1,131 @@
+{
+  "network": {
+    "alias": "studionet",
+    "chain_id": 61999,
+    "rpc": "https://studio.genlayer.com/api",
+    "explorer": "https://explorer-studio.genlayer.com/",
+    "cli_version": "0.39.2"
+  },
+  "source_commit_sha": null,
+  "contracts": {
+    "calibration_anchor": {
+      "address": "0xb489b48ACd1035f48cDFd347346011C8A97f36fb",
+      "deployment_transaction": "0xf130cc9e316a9fe3be6b607e2b9541d650edc4bfe47d09947c8156f3e6f8ef9c",
+      "deployment_state": "FINALIZED",
+      "deployment_execution": "SUCCESS"
+    },
+    "calibration_gate": {
+      "address": "0x39aeF5E565Cd7211b10c78E03c754C98f5ACAb94",
+      "deployment_transaction": "0xadf92aaa065608804c2c05efd27d5091310d964b5216d65a289613eb76d2cbf2",
+      "deployment_state": "FINALIZED",
+      "deployment_execution": "SUCCESS",
+      "open_transaction": "0x21134caf2cad2ec518507df040f1ec6a5611772ec657bb9c8c7eabf793f287f8",
+      "open_state": "FINALIZED",
+      "status_readback": {
+        "opened": true,
+        "suite_id": 1,
+        "expected_suite_hash": "ef3d366b60c54dab2f4bc432b6bcaef5def090b4fe334a8a18d699858b0a0546",
+        "minimum_run_id": 1,
+        "opened_run_id": 1,
+        "opened_run_hash": "d57e853bac5a6e405c9929ccb395ae555bf72a9fb9c44c25324b749e4cd116cf"
+      }
+    }
+  },
+  "observed_transactions": {
+    "suite_creation": {
+      "hash": "0x400844d47d5b2543a4d4b7e656bd34f7478f7c9c5bc04443890566cf4fc48c4d",
+      "state": "FINALIZED"
+    },
+    "first_case_creation": {
+      "hash": "0x13a3c923bbb6e1b55b656fb7c14749725a7ab970d727d0b3b709764de01c9c2e",
+      "state": "FINALIZED"
+    },
+    "third_case_creation": {
+      "hash": "0xe5700a92807c5b1604f6c06a667f405d458821d35efa3f6aef49ec53e2a3287a",
+      "state": "FINALIZED"
+    },
+    "suite_sealing": {
+      "hash": "0x1befdd06ab2660c6cf0d8d01ee24e0884faf5d9de73cc60d159efc699ec61871",
+      "state": "FINALIZED"
+    },
+    "run_opening": {
+      "hash": "0x96f3c0f512fb66f22e081a13c1f1c3f2767ae8e3b6452d8574cf04b4c32f776f",
+      "state": "FINALIZED"
+    },
+    "case_2_execution": {
+      "hash": "0xd031f1a62d4ef50c6f65e9afb34f3837c77a9db13f6f8ca11a636fa7549a210d",
+      "state": "FINALIZED"
+    },
+    "case_1_execution": {
+      "hash": "0x89d9f1d7f45841905278d0509f0d9c3bd7830a8e1f7687861f804451b9a11499",
+      "state": "FINALIZED"
+    }
+  },
+  "suite": {
+    "id": 1,
+    "name": "CalibrationAnchor reviewer suite",
+    "status": "SEALED",
+    "hash": "ef3d366b60c54dab2f4bc432b6bcaef5def090b4fe334a8a18d699858b0a0546",
+    "cases": [
+      {
+        "id": 1,
+        "title": "Explicitly supported record",
+        "gold": "SUPPORTED",
+        "critical": true,
+        "weight": 2,
+        "observed": "SUPPORTED",
+        "outcome": "MATCH",
+        "runtime_state": "OK",
+        "result_hash": "f155fd24607f3ee09634c10ec42cb98baeff84e82d39ff6bba82de0d9db21739"
+      },
+      {
+        "id": 2,
+        "title": "Explicitly unsupported record",
+        "gold": "NOT_SUPPORTED",
+        "critical": false,
+        "weight": 2,
+        "observed": "NOT_SUPPORTED",
+        "outcome": "MATCH",
+        "runtime_state": "OK",
+        "result_hash": "7bab1146e58c6c9d0f975a80bf3f8df18d41a6466dfa9276ef32463acf80d7e2"
+      },
+      {
+        "id": 3,
+        "title": "Incomplete record",
+        "gold": "AMBIGUOUS",
+        "critical": false,
+        "weight": 1,
+        "observed": "AMBIGUOUS",
+        "outcome": "MATCH",
+        "runtime_state": "OK",
+        "result_hash": "83b7a222905b64468f839baa40e0b6388146081b52df18f4d64abcc153d2e4ad"
+      }
+    ],
+    "calibration_run": {
+      "id": 1,
+      "state": "FINALIZED",
+      "calibration_state": "STABLE",
+      "finalization_transaction": "0x5babecf55eef61e50bd9932bdcea0a0dc0b2a3ffba5381308afb92c5ced589fc",
+      "result_count": 3,
+      "total_weight": 5,
+      "valid_weight": 5,
+      "coverage_bps": 10000,
+      "agreement_bps": 10000,
+      "flip_bps": 0,
+      "uncertain_bps": 0,
+      "critical_failures": 0,
+      "critical_coverage_failures": 0,
+      "changed_count": 0,
+      "behavior_hash": "a08cfb4bdd3a45d10041473aab1250c1ad98b73a0c4dd73bef24a43cf5fb87a0",
+      "run_hash": "d57e853bac5a6e405c9929ccb395ae555bf72a9fb9c44c25324b749e4cd116cf"
+    }
+  },
+  "stable_checks": {
+    "exact_suite_hash_min_run_1": true,
+    "incorrect_all_f_suite_hash_min_run_1": false
+  },
+  "notes": [
+    "The benchmark labels are the suite author's frozen assertions; this proof does not claim they are universally true.",
+    "Case 2 result transaction hash was not retained in the CLI output; its finalized on-chain result readback is recorded above."
+  ]
+}
